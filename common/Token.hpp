@@ -27,7 +27,9 @@ enum TokenType {
     ASSIGN,
     LB,
     RB,
-    SEMICOLON
+    SEMICOLON,
+    TOKEN_EOLN,
+    TOKEN_EOF
 };
 
 static constexpr std::string keywordLiteral[] = {
@@ -77,8 +79,8 @@ static inline TokenType getTokenType(const std::string& str) {
 class Token {
 public:
     TokenType type;
-    const std::string word;
+    const std::string lexeme;
 
     Token() = default;
-    Token(const TokenType type, const std::string& word) : type(type), word(word) {}
+    Token(const TokenType type, const std::string& lexeme) : type(type), lexeme(lexeme) {}
 };
