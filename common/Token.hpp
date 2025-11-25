@@ -80,7 +80,8 @@ class Token {
 public:
     TokenType type;
     const std::string lexeme;
+    size_t line;
 
     Token() = default;
-    Token(const TokenType type, const std::string& lexeme) : type(type), lexeme(lexeme) {}
+    Token(const TokenType type, const std::string& lexeme, size_t line) : type(type), lexeme(lexeme), line(line) {}
 };
