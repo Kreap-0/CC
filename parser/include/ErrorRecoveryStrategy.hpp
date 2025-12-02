@@ -1,4 +1,6 @@
-#include <Token.hpp>
+#pragma once
+
+#include <ParserContext.hpp>
 
 #include <set>
 
@@ -15,10 +17,5 @@ public:
         syncTokens = {SEMICOLON, END, ELSE, TOKEN_EOF};
     }
     
-    void recover(ParserContext* ctx, TokenType expected) override {
-        while (!syncTokens.count(ctx->currentToken().type) && 
-               ctx->currentToken().type != TOKEN_EOF) {
-            ctx->consume();
-        }
-    }
+    void recover(ParserContext* ctx, TokenType expected) override;
 };
