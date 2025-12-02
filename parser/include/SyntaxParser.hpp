@@ -18,7 +18,7 @@ public:
         ctx->expect(BEGIN);
         ctx->enterScope("global", false);
         parseDeclarationList();
-        ctx->expect(SEMICOLON);
+        // ctx->expect(SEMICOLON);
         parseStatementList();
         ctx->expect(END);
         ctx->exitScope();
@@ -27,7 +27,11 @@ public:
     void parseDeclarationList() {
         parseDeclaration();
         while (ctx->match(SEMICOLON)) {
-            parseDeclaration();
+            if (ctx->currentToken().type == INTEGER)
+                parseDeclaration();
+            else {
+                break;
+            }
         }
     }
     
@@ -90,7 +94,7 @@ public:
     void parseFunctionBody() {
         ctx->expect(BEGIN);
         parseDeclarationList();
-        ctx->expect(SEMICOLON);
+        // ctx->expect(SEMICOLON);
         parseStatementList();
         ctx->expect(END);
     }

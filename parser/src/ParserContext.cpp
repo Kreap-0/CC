@@ -1,6 +1,7 @@
 #include <ParserContext.hpp>
 
 #include <sstream>
+#include <iostream>
 
 ParserContext::ParserContext(const std::string& filename) {
     recoveryStrategy = std::make_unique<SyncTokenStrategy>();
@@ -33,6 +34,8 @@ void ParserContext::loadTokens(const std::string& filename) {
             tokenBuffer.emplace_back(type, lexeme, lineNum);
         }
     }
+
+    std::cerr << "LoadTokens over." << std::endl;
 }
 
 const Token& ParserContext::currentToken() const {
@@ -64,6 +67,8 @@ void ParserContext::expect(TokenType expected) {
 }
 
 void ParserContext::reportError(const std::string& message) {
+    std::cerr << "[Line " + std::to_string(currentToken().line) + 
+                        "] Syntax Error: " + message << std::endl;
     errors.push_back("[Line " + std::to_string(currentToken().line) + 
                         "] Syntax Error: " + message);
 }
