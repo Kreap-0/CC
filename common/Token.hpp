@@ -32,12 +32,12 @@ enum TokenType {
     TOKEN_EOF
 };
 
-static constexpr std::string keywordLiteral[] = {
+static constexpr std::string TokenLiteral[] = {
     "",
     "begin", "end", "integer",
     "if", "then", "else",
     "function", "read", "write",
-    "", "", "=",
+    "identity", "constant", "=",
     "<>", "<=", "<",
     ">=", ">", "-",
     "*", ":=", "(",
@@ -83,5 +83,5 @@ public:
     size_t line;
 
     Token() = default;
-    Token(const TokenType type, const std::string& lexeme, size_t line) : type(type), lexeme(lexeme), line(line) {}
+    Token(const TokenType type, const std::string& lexeme, size_t line = 0) : type(type), lexeme(lexeme), line(line) {}
 };

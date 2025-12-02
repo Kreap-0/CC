@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
 
     if (argc != 2 || !std::string(argv[1]).ends_with(".txt")) {
         ofserr << "Command line argument error" << std::endl;
-        return 0;
+        return 1;
     }
 
     auto str = read_file_to_string(argv[1]);
