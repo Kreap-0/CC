@@ -26,12 +26,10 @@ public:
     
     void parseDeclarationList() {
         parseDeclaration();
-        while (ctx->match(SEMICOLON)) {
-            if (ctx->currentToken().type == INTEGER)
-                parseDeclaration();
-            else {
-                break;
-            }
+        ctx->expect(SEMICOLON);
+        while (ctx->currentToken().type == INTEGER) {
+            parseDeclaration();
+            ctx->expect(SEMICOLON);
         }
     }
     

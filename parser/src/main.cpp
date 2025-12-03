@@ -26,9 +26,7 @@ int main(int argc, char* argv[]) {
 
         std::cerr << "ParserProgram over." << std::endl;
         
-        std::string baseName = argv[1];
-        size_t dotPos = baseName.find_last_of('.');
-        if (dotPos != std::string::npos) baseName = baseName.substr(0, dotPos);
+        std::string baseName = "parser";
         
         symbolManager.generateFiles(baseName);
         

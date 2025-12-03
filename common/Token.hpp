@@ -41,7 +41,7 @@ static constexpr std::string TokenLiteral[] = {
     "<>", "<=", "<",
     ">=", ">", "-",
     "*", ":=", "(",
-    ")", ";"
+    ")", ";", "EOLN", "EOF"
 };
 
 static const std::unordered_map<std::string, TokenType> stringToTokenMap = {
